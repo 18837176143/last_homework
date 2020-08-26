@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ypk.mapper.CmfzUserMapper">
+    <select id="selectAllSex" resultType="com.ypk.entity.CmfzUser">
+      SELECT user_sex,COUNT(0) totalNum
+FROM cmfz_user
+GROUP BY user_sex
+ORDER BY user_sex DESC
+  </select>
+
+
+    <select id="selectSexNum" resultType="map">
+     SELECT user_sex,COUNT(*) VALUE
+	FROM cmfz_user
+	GROUP BY user_sex
+    </select>
+    <select id="selectTime" resultType="map">
+        SELECT  c.value,COUNT(*) total
+	FROM
+	(SELECT TIMESTAMPDIFF(WEEK,user_create_date,NOW()) VALUE
+	FROM cmfz_user) c
+	WHERE c.value IN(0,1,2)
+	GROUP BY c.value
+    </select>
+    <select id="selectProvince" resultType="map">
+    SELECT user_province name,COUNT(*) value
+	FROM cmfz_user
+	GROUP BY user_province
+
+    </select>
+</mapper>

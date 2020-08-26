@@ -1,0 +1,28 @@
+server:
+  port: 8887
+  servlet:
+    context-path: /cmfz
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://localhost:3306/buddhism?useUnicode=true&amp;characterEncoding=utf-8
+    username: root
+    password: 123456
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT-8
+  servlet:
+    multipart:
+      max-file-size: 100000000
+      enabled: true
+      max-request-size: 100000000
+mybatis-plus:
+  type-aliases-package: com.ypk.entity
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    root: info
+    com.ypk: debug
