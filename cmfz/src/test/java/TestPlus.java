@@ -78,4 +78,7 @@ public class TestPlus {
             System.out.println(album);
         }
     }
+    @Test
+    public void test8(){
+    }
 }
